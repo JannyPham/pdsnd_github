@@ -129,6 +129,37 @@ def trip_duration_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def user_stats(df):
+    print('\nCalculating User Stats...\n')
+    start_time = time.time()
+    
+    # Display counts of user types
+    user_types = df['User Type'].value_counts()
+    print('Counts of User Types:')
+    print(user_types)
+    
+    # Display counts of gender
+    if 'Gender' in df:
+        gender_counts = df['Gender'].value_counts()
+        print('\nCounts of Gender:')
+        print(gender_counts)
+    else:
+        print('\nGender data is not available for this city.')
+    
+    # Display earliest, most recent, and most common year of birth
+    if 'Birth Year' in df:
+        earliest_birth_year = df['Birth Year'].min()
+        most_recent_birth_year = df['Birth Year'].max()
+        common_birth_year = df['Birth Year'].mode()[0]
+        print('\nEarliest Birth Year:', int(earliest_birth_year))
+        print('Most Recent Birth Year:', int(most_recent_birth_year))
+        print('Most Common Birth Year:', int(common_birth_year))
+    else:
+        print('\nBirth year data is not available for this city.')
+    
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-'*40)
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -147,35 +178,7 @@ def main():
         #trip duration stats end
 
         #user stats begin
-        print('\nCalculating User Stats...\n')
-        start_time = time.time()
-        
-        # Display counts of user types
-        user_types = df['User Type'].value_counts()
-        print('Counts of User Types:')
-        print(user_types)
-        
-        # Display counts of gender
-        if 'Gender' in df:
-            gender_counts = df['Gender'].value_counts()
-            print('\nCounts of Gender:')
-            print(gender_counts)
-        else:
-            print('\nGender data is not available for this city.')
-        
-        # Display earliest, most recent, and most common year of birth
-        if 'Birth Year' in df:
-            earliest_birth_year = df['Birth Year'].min()
-            most_recent_birth_year = df['Birth Year'].max()
-            common_birth_year = df['Birth Year'].mode()[0]
-            print('\nEarliest Birth Year:', int(earliest_birth_year))
-            print('Most Recent Birth Year:', int(most_recent_birth_year))
-            print('Most Common Birth Year:', int(common_birth_year))
-        else:
-            print('\nBirth year data is not available for this city.')
-        
-        print("\nThis took %s seconds." % (time.time() - start_time))
-        print('-'*40)
+        user_stats(df)
         #user stats end
         
         # Ask user if they want to see raw data
