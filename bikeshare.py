@@ -36,17 +36,17 @@ def get_filters():
         city = input("Would you like to see data for Chicago, New York City, or Washington? ").lower()
     
     # Get user input for month (all, january, february, ... , june)
-    month = input("Which month? (all, january, february, ... , june) ").lower()
+    month = input("Which month you want to see data for? (all, january, february, ... , june) ").lower()
     while month not in setMonth:
         print("Invalid month. Please try again.")
-        month = input("Which month? (all, january, february, ... , june) ").lower()
+        month = input("Which month you want to see data for? (all, january, february, ... , june) ").lower()
     
     # Get user input for day of week (all, monday, tuesday, ... sunday)
-    day = input("Which day? (all, monday, tuesday, ... sunday) ").lower()
+    day = input("Which day you want to see data for? (all, monday, tuesday, ... sunday) ").lower()
     
     while day not in setDay:
         print("Invalid day. Please try again.")
-        day = input("Which day? (all, monday, tuesday, ... sunday) ").lower()
+        day = input("Which day you want to see data for? (all, monday, tuesday, ... sunday) ").lower()
     
     print('-'*40)
     return city, month, day
