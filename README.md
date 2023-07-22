@@ -58,4 +58,5 @@ This project wouldn't have been possible without the valuable contributions of t
 
 Udacity: The project is part of the "Programming for Data Science with Python" course offered by Udacity. Their comprehensive curriculum and guidance have been instrumental in the successful completion of this project.
 
+Reviewers and Mentors: I would like to express our gratitude to the reviewers and mentors who provided valuable feedback and guidance throughout the development of this project.
 
