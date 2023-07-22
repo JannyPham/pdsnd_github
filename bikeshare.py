@@ -114,6 +114,21 @@ def station_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def trip_duration_stats(df):
+    print('\nCalculating Trip Duration...\n')
+    start_time = time.time()
+    
+    # Display total travel time
+    total_travel_time = df['Trip Duration'].sum()
+    print('Total Travel Time:', total_travel_time, 'seconds')
+    
+    # Display mean travel time
+    mean_travel_time = df['Trip Duration'].mean()
+    print('Mean Travel Time:', mean_travel_time, 'seconds')
+    
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-'*40)
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -128,19 +143,7 @@ def main():
         #station stats end
 
         #trip duration stats begin
-        print('\nCalculating Trip Duration...\n')
-        start_time = time.time()
-        
-        # Display total travel time
-        total_travel_time = df['Trip Duration'].sum()
-        print('Total Travel Time:', total_travel_time, 'seconds')
-        
-        # Display mean travel time
-        mean_travel_time = df['Trip Duration'].mean()
-        print('Mean Travel Time:', mean_travel_time, 'seconds')
-        
-        print("\nThis took %s seconds." % (time.time() - start_time))
-        print('-'*40)
+        trip_duration_stats(df)
         #trip duration stats end
 
         #user stats begin
