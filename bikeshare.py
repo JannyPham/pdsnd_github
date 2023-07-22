@@ -94,6 +94,26 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def station_stats(df):
+    print('\nCalculating The Most Popular Stations and Trip...\n')
+    start_time = time.time()
+    
+    # Display the most commonly used start station
+    common_start_station = df['Start Station'].mode()[0]
+    print('Most Commonly Used Start Station:', common_start_station)
+    
+    # Display the most commonly used end station
+    common_end_station = df['End Station'].mode()[0]
+    print('Most Commonly Used End Station:', common_end_station)
+    
+    # Display the most frequent combination of start station and end station trip
+    df['Start-End Station'] = df['Start Station'] + ' to ' + df['End Station']
+    common_trip = df['Start-End Station'].mode()[0]
+    print('Most Common Trip:', common_trip)
+    
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-'*40)
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -104,24 +124,7 @@ def main():
         #time_stats end
 
         #station stats begin
-        print('\nCalculating The Most Popular Stations and Trip...\n')
-        start_time = time.time()
-        
-        # Display the most commonly used start station
-        common_start_station = df['Start Station'].mode()[0]
-        print('Most Commonly Used Start Station:', common_start_station)
-        
-        # Display the most commonly used end station
-        common_end_station = df['End Station'].mode()[0]
-        print('Most Commonly Used End Station:', common_end_station)
-        
-        # Display the most frequent combination of start station and end station trip
-        df['Start-End Station'] = df['Start Station'] + ' to ' + df['End Station']
-        common_trip = df['Start-End Station'].mode()[0]
-        print('Most Common Trip:', common_trip)
-        
-        print("\nThis took %s seconds." % (time.time() - start_time))
-        print('-'*40)
+        station_stats(df)
         #station stats end
 
         #trip duration stats begin
